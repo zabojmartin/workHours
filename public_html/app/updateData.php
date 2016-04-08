@@ -5,7 +5,7 @@
 
 	$db = new DB();
 	
-	$sql = "UPDATE `hours` SET amount='$data->amount' WHERE id='$data->id'";
+	$sql = "UPDATE `hours` SET amount='$data->amount', date='$data->date' WHERE id='$data->id'";
 
 	  //$sql = "SELECT * FROM `blogs` ORDER BY `id` DESC";
     $result = mysqli_query($db->getConnection(), $sql);

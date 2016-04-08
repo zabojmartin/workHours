@@ -5,8 +5,8 @@ angular.module('workHours', ['ngRoute', 'controller'])
 	.when('/', {
 		templateUrl: 'templates/home.html'
 	})
-	.when('/blog', {
-		templateUrl: 'templates/blog.html',
+	.when('/app', {
+		templateUrl: 'templates/app.html',
 		controller: 'BlogCtrl'
 	})
 	.otherwise({
