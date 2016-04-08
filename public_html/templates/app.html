@@ -1,0 +1,113 @@
+<div class="container">
+
+	<div class="row">
+		<div class="col-md-4 col-md-offset-1">
+
+
+			<h2>Search</h2>
+
+			<input type="search" ng-model="query" placeholder="Search by date" class="form-control datepicker" >
+			<br>
+			<br>
+
+			<button class="btn btn-primary" ng-click="frmToggle()" id="but">Add new record</button>
+			<br>
+
+			<form class="form-horizontal" id="hourForm" ng-submit="pushData(frm)" hidden>
+				<div class="form-group">
+					<label for="date" class="control-label">Date</label>
+					<div class="col-sm-10">
+						<input type="text" ng-model="frm.date" class="form-control datepicker" >
+
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="amount" class="control-label">Amount</label>
+					<div class="col-sm-10">
+
+						<input ng-init="frm.amount = 3" type="number" name="quantity" min="0.5" max="12"  step="0.5" class="form-control" ng-model="frm.amount">
+
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="" style="padding-left:15px;">
+						<button type="submit" value="submit" class="btn btn-primary">Save</button>
+					</div>
+				</div>
+			</form>
+
+
+			<div class="" >
+				<!-- detail ukolu -->
+				<form class="well well-sm" ng-show="currentBlog" ng-submit="updateData(frm)" ng-model="frm">
+					<h2>Update your record</h2>
+
+					<label>Date:</label>
+
+					<input type="text" ng-model="frm.dateEdit" class="form-control datepicker">
+
+
+					<label>Amount:</label>
+
+					<input type="number" min="0.5" max="12"  step="0.5" class="form-control" ng-model="frm.amountEdit">
+
+
+
+					<br />
+
+
+					<button type="submit" value="submit" class="btn btn-success">Update</button>
+				</form>
+			</div>
+
+
+		</div>
+
+
+		<div class="col-md-5 col-md-offset-1">
+			<h2>Your work records</h2>
+			<table class="table table-striped" >
+				<tr>
+					<th>Date</th><th>Day</th><th>Amount</th><th>Remove</th><th>Update</th>
+				</tr>
+				<tr ng-repeat="blog in blogs| filter: query">
+					<td>{{ blog.date | date:'dd.MM.yyyy' }}</td><td>{{ blog.date | date:'EEE' }}</td>
+					<td>{{ blog.amount}}</td>
+					<td><button class="btn btn-danger" ng-click="removeData(blog.id)"><span class="glyphicon glyphicon-remove"></span></button></td></td><td><button class="btn btn-primary" ng-click="showBlog(blog)"><span class="glyphicon glyphicon-wrench"></span></button></td>
+				</tr>
+			</table> 	
+
+		</div>
+
+	</div>
+
+
+</div>
+
+<script type="text/javascript">
+			// When the document is ready
+			$(document).ready(function () {
+
+				$('.datepicker').datepicker({
+					format: "yyyy-mm-dd"
+				});
+
+
+
+
+
+
+
+
+
+			});
+</script>
+
+<style>
+	nav li:nth-child(2){
+
+		background-color:#6E6E6E;
+	}
+
+</style>
+

@@ -3,7 +3,7 @@ angular.module('controller',[])
 .controller('BlogCtrl', ['$scope', '$http', '$log', function($scope, $http, $log) {
 
 	$scope.frmToggle = function() {
-		$('#blogForm').slideToggle();
+		$('#hourForm').slideToggle();
 	} 
 	
 	
@@ -18,6 +18,7 @@ angular.module('controller',[])
 	//$scope.frm1.pokus = 1;
 	var cislo=parseFloat(blog.amount);
 	$scope.frm.amountEdit = cislo;
+	$scope.frm.dateEdit = blog.date;
 	
 	};
   
@@ -79,7 +80,7 @@ angular.module('controller',[])
 			console.log($params);
 			//console.log($scope.currentBlog);
 			
-			$http.post('./app/updateData.php',{'id':$scope.currentBlog.id, 'amount':$params.amountEdit})
+			$http.post('./app/updateData.php',{'id':$scope.currentBlog.id, 'amount':$params.amountEdit, 'date':$params.dateEdit})
 				.success(function(data) {
 		$scope.currentBlog = null;           
         
