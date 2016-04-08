@@ -1,0 +1,86 @@
+<div class="container">
+
+	<h1>{{ title }}</h1>
+	
+	<button class="btn btn-primary" ng-click="frmToggle()">Add Blog</button>
+	<br>
+
+	<form class="form-horizontal" id="blogForm" ng-submit="pushData(frm)" hidden>
+		<div class="form-group">
+			<label for="date" class="col-sm-2 control-label">Date</label>
+			<div class="col-sm-10">
+				<input type="text" ng-model="frm.date" class="form-control" id="example1">
+				
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="amount" class="col-sm-2 control-label">Amount</label>
+			<div class="col-sm-10">
+				
+				<input ng-init="frm.amount=3" type="number" name="quantity" min="0.5" max="12"  step="0.5" class="form-control" ng-model="frm.amount">
+			
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" value="submit" class="btn btn-primary">Insert Blog</button>
+			</div>
+		</div>
+	</form>
+
+	<br>
+	<input type="search" ng-model="query" placeholder="Search Blog" class="form-control">
+	<br>
+  
+
+	<table class="table table-striped">
+	 	<tr>
+	 		<th>Date</th><th>Amount</th><th>Remove</th><th>upd</th>
+	 	</tr>
+	 	<tr ng-repeat="blog in blogs | filter: query">
+	 		<td>{{ blog.date }}</td><td>{{ blog.amount }}</td><td><button class="btn btn-danger" ng-click="removeData(blog.id)">x</button></td></td><td><button class="btn btn-primary" ng-click="showBlog(blog)">x</button></td>
+	 	</tr>
+	</table> 
+	
+	
+	
+				<div class="col-md-3" >
+					<!-- detail ukolu -->
+					<form class="well well-sm" ng-show="currentBlog" ng-submit="updateData(frm)" ng-model="frm">
+						<h2>{{currentBlog.amount}}</h2>
+
+
+						<label>Popis:</label>
+						
+						
+							
+							
+							<input type="number" min="0.5" max="12"  step="0.5" class="form-control" ng-model="frm.amountEdit">
+			
+						
+						
+						<p>{{currentBlog.amount}}</p>
+						<br />
+
+						<input class="btn btn-success" type="submit" value="Upravit" />
+					</form>
+				</div>
+	
+	
+	
+  
+  
+
+</div>
+
+<script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+                
+                $('#example1').datepicker({
+                    format: "yyyy-mm-dd"
+                });  
+            
+            });
+        </script>
+
